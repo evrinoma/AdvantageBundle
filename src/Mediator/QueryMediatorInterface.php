@@ -25,7 +25,7 @@ interface QueryMediatorInterface
 
     /**
      * @param AdvantageApiDtoInterface $dto
-     * @param QueryBuilderInterface $builder
+     * @param QueryBuilderInterface    $builder
      *
      * @return mixed
      */
@@ -33,7 +33,7 @@ interface QueryMediatorInterface
 
     /**
      * @param AdvantageApiDtoInterface $dto
-     * @param QueryBuilderInterface $builder
+     * @param QueryBuilderInterface    $builder
      *
      * @return array
      */

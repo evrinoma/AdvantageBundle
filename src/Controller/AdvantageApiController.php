@@ -14,13 +14,13 @@ declare(strict_types=1);
 namespace Evrinoma\AdvantageBundle\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Evrinoma\DtoBundle\Factory\FactoryDtoInterface;
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
 use Evrinoma\AdvantageBundle\Exception\AdvantageCannotBeSavedException;
 use Evrinoma\AdvantageBundle\Exception\AdvantageInvalidException;
 use Evrinoma\AdvantageBundle\Exception\AdvantageNotFoundException;
 use Evrinoma\AdvantageBundle\Facade\Advantage\FacadeInterface;
 use Evrinoma\AdvantageBundle\Serializer\GroupInterface;
+use Evrinoma\DtoBundle\Factory\FactoryDtoInterface;
 use Evrinoma\UtilsBundle\Controller\AbstractWrappedApiController;
 use Evrinoma\UtilsBundle\Controller\ApiControllerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;

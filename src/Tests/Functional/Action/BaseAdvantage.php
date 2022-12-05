@@ -146,12 +146,12 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
         $this->testResponseStatusCreated();
         $this->checkResult($created);
 
-        $query = static::getDefault([AdvantageApiDtoInterface::ID=>$created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::NAME => Name::empty()]);
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::NAME => Name::empty()]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AdvantageApiDtoInterface::ID=>$created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::URL => URL::empty()]);
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::URL => URL::empty()]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
