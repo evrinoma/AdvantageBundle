@@ -1,0 +1,9 @@
+services:
+  evrinoma.advantage.test.functional.action.advantage:
+    class: Evrinoma\AdvantageBundle\Tests\Functional\Action\BaseAdvantage
+    public: true
+    arguments:
+
+  Evrinoma\AdvantageBundle\Tests\Functional\Action\BaseAdvantage:
+    alias: evrinoma.advantage.test.functional.action.advantage
+    public: true

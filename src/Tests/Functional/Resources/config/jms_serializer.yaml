@@ -1,0 +1,6 @@
+jms_serializer:
+  metadata:
+    directories:
+      AdvantageBundle:
+        namespace_prefix: "Evrinoma\\AdvantageBundle"
+        path: '%kernel.root_dir%/Resources/config/serializer/AdvantageBundle'

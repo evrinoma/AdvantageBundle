@@ -1,0 +1,5 @@
+services:
+  evrinoma.advantage.fixtures.advantage:
+    class: Evrinoma\AdvantageBundle\Fixtures\AdvantageFixtures
+    tags:
+      - { name: doctrine.fixture.orm }

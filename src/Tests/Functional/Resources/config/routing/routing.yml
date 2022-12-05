@@ -1,0 +1,2 @@
+advantage:
+    resource: "@EvrinomaAdvantageBundle/Resources/config/routes.yml"

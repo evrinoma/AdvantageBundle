@@ -1,0 +1,3 @@
+advantageapi:
+  resource: "@EvrinomaAdvantageBundle/Resources/config/routing/api.yml"
+  prefix: evrinoma

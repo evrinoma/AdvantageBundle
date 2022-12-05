@@ -1,0 +1,5 @@
+services:
+  evrinoma.advantage.object_manager:
+    class:  Doctrine\Persistence\ObjectManager
+    public: false
+    arguments: ['%evrinoma.advantage.model_manager_name%']

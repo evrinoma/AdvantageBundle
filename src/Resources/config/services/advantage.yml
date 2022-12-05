@@ -1,0 +1,90 @@
+services:
+  Evrinoma\AdvantageBundle\Controller\AdvantageApiController:
+    alias: evrinoma.advantage.api.controller
+    public: true
+
+  evrinoma.advantage.api.controller:
+    class: Evrinoma\AdvantageBundle\Controller\AdvantageApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.advantage.facade'
+    autowire: true
+
+  evrinoma.advantage.facade:
+    class: Evrinoma\AdvantageBundle\Facade\Advantage\Facade
+    arguments:
+      - '@evrinoma.advantage.command.manager'
+      - '@evrinoma.advantage.query.manager'
+    autowire: true
+
+  Evrinoma\AdvantageBundle\Facade\Advantage\FacadeInterface:
+    alias: evrinoma.advantage.facade
+
+  evrinoma.advantage.factory:
+    class: Evrinoma\AdvantageBundle\Factory\AdvantageFactory
+    public: true
+    arguments:
+
+  evrinoma.advantage.orm.repository:
+    class: Evrinoma\AdvantageBundle\Repository\Orm\Advantage\AdvantageRepository
+    public: true
+    arguments:
+
+  evrinoma.advantage.command.manager:
+    class: Evrinoma\AdvantageBundle\Manager\CommandManager
+    arguments:
+      - '@evrinoma.advantage.validator'
+      - '@evrinoma.advantage.repository'
+      - '@evrinoma.advantage.factory'
+      - '@evrinoma.advantage.command.mediator'
+
+  Evrinoma\AdvantageBundle\Manager\CommandManagerInterface:
+    alias: evrinoma.advantage.command.manager
+
+  evrinoma.advantage.query.manager:
+    class: Evrinoma\AdvantageBundle\Manager\QueryManager
+    arguments:
+      - '@evrinoma.advantage.repository'
+
+  Evrinoma\AdvantageBundle\Manager\QueryManagerInterface:
+    alias: evrinoma.advantage.query.manager
+    
+  evrinoma.advantage.validator:
+    class: Evrinoma\AdvantageBundle\Validator\AdvantageValidator
+    public: true
+    arguments:
+
+  Evrinoma\AdvantageBundle\Validator\AdvantageValidator:
+    alias: evrinoma.advantage.validator
+
+  evrinoma.advantage.query.orm.mediator:
+    class: Evrinoma\AdvantageBundle\Mediator\Orm\QueryMediator
+    public: true
+    arguments:
+
+  Evrinoma\AdvantageBundle\Mediator\Orm\QueryMediator:
+    alias: evrinoma.advantage.query.orm.mediator
+
+  evrinoma.advantage.command.mediator:
+    class: Evrinoma\AdvantageBundle\Mediator\CommandMediator
+    public: true
+    arguments:
+
+  Evrinoma\AdvantageBundle\Mediator\CommandMediator:
+    alias: evrinoma.advantage.command.mediator
+
+  Evrinoma\AdvantageBundle\Mediator\CommandMediatorInterface:
+    alias: evrinoma.advantage.command.mediator
+
+  evrinoma.advantage.pre.validator:
+    class: Evrinoma\AdvantageBundle\PreValidator\DtoPreValidator
+    public: true
+    arguments:
+
+  Evrinoma\AdvantageBundle\PreValidator\DtoPreValidator:
+    alias: evrinoma.advantage.pre.validator
+
+  Evrinoma\AdvantageBundle\PreValidator\DtoPreValidatorInterface:
+    alias: evrinoma.advantage.pre.validator

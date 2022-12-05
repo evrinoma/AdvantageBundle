@@ -1,0 +1,3 @@
+advantage_api:
+  resource: "@EvrinomaAdvantageBundle/Controller/AdvantageApiController.php"
+  type: annotation

@@ -1,0 +1,22 @@
+Evrinoma\AdvantageBundle\Model\Advantage\AbstractAdvantage:
+  exclusion_policy: ALL
+  properties:
+    id:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
+    createdAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+    updatedAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+    active:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
+    name:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
+    url:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
+
