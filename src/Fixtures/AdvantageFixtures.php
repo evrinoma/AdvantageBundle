@@ -24,45 +24,45 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
 {
     protected static array $data = [
         [
-            AdvantageApiDtoInterface::NAME => 'ite',
-            AdvantageApiDtoInterface::URL => 'http://ite',
-            AdvantageApiDtoInterface::ACTIVE => 'a',
+            AdvantageApiDtoInterface::TITLE => 'ite',
+            AdvantageApiDtoInterface::BODY => 'http://ite',
+            AdvantageApiDtoInterface::POSITION => 'a',
             'created_at' => '2008-10-23 10:21:50',
         ],
         [
-            AdvantageApiDtoInterface::NAME => 'kzkt',
-            AdvantageApiDtoInterface::URL => 'http://kzkt',
-            AdvantageApiDtoInterface::ACTIVE => 'a',
+            AdvantageApiDtoInterface::TITLE => 'kzkt',
+            AdvantageApiDtoInterface::BODY => 'http://kzkt',
+            AdvantageApiDtoInterface::POSITION => 'a',
             'created_at' => '2015-10-23 10:21:50',
         ],
         [
-            AdvantageApiDtoInterface::NAME => 'c2m',
-            AdvantageApiDtoInterface::URL => 'http://c2m',
-            AdvantageApiDtoInterface::ACTIVE => 'a',
+            AdvantageApiDtoInterface::TITLE => 'c2m',
+            AdvantageApiDtoInterface::BODY => 'http://c2m',
+            AdvantageApiDtoInterface::POSITION => 'a',
             'created_at' => '2020-10-23 10:21:50',
         ],
         [
-            AdvantageApiDtoInterface::NAME => 'kzkt2',
-            AdvantageApiDtoInterface::URL => 'http://kzkt2',
-            AdvantageApiDtoInterface::ACTIVE => 'd',
+            AdvantageApiDtoInterface::TITLE => 'kzkt2',
+            AdvantageApiDtoInterface::BODY => 'http://kzkt2',
+            AdvantageApiDtoInterface::POSITION => 'd',
             'created_at' => '2015-10-23 10:21:50',
             ],
         [
-            AdvantageApiDtoInterface::NAME => 'nvr',
-            AdvantageApiDtoInterface::URL => 'http://nvr',
-            AdvantageApiDtoInterface::ACTIVE => 'b',
+            AdvantageApiDtoInterface::TITLE => 'nvr',
+            AdvantageApiDtoInterface::BODY => 'http://nvr',
+            AdvantageApiDtoInterface::POSITION => 'b',
             'created_at' => '2010-10-23 10:21:50',
         ],
         [
-            AdvantageApiDtoInterface::NAME => 'nvr2',
-            AdvantageApiDtoInterface::URL => 'http://nvr2',
-            AdvantageApiDtoInterface::ACTIVE => 'd',
+            AdvantageApiDtoInterface::TITLE => 'nvr2',
+            AdvantageApiDtoInterface::BODY => 'http://nvr2',
+            AdvantageApiDtoInterface::POSITION => 'd',
             'created_at' => '2010-10-23 10:21:50',
             ],
         [
-            AdvantageApiDtoInterface::NAME => 'nvr3',
-            AdvantageApiDtoInterface::URL => 'http://nvr3',
-            AdvantageApiDtoInterface::ACTIVE => 'd',
+            AdvantageApiDtoInterface::TITLE => 'nvr3',
+            AdvantageApiDtoInterface::BODY => 'http://nvr3',
+            AdvantageApiDtoInterface::POSITION => 'd',
             'created_at' => '2011-10-23 10:21:50',
         ],
     ];
@@ -84,10 +84,10 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         foreach (static::$data as $record) {
             $entity = new static::$class();
             $entity
-                ->setName($record[AdvantageApiDtoInterface::NAME])
-                ->setUrl($record[AdvantageApiDtoInterface::URL])
+                ->setName($record[AdvantageApiDtoInterface::TITLE])
+                ->setUrl($record[AdvantageApiDtoInterface::BODY])
                 ->setCreatedAt(new \DateTimeImmutable($record['created_at']))
-                ->setActive($record[AdvantageApiDtoInterface::ACTIVE]);
+                ->setActive($record[AdvantageApiDtoInterface::POSITION]);
             $this->addReference($short.$i, $entity);
             $manager->persist($entity);
             ++$i;

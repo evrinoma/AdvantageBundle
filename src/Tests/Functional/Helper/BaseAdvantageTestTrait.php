@@ -38,14 +38,14 @@ trait BaseAdvantageTestTrait
 
     protected function createConstraintBlankName(): array
     {
-        $query = static::getDefault([AdvantageApiDtoInterface::NAME => '']);
+        $query = static::getDefault([AdvantageApiDtoInterface::TITLE => '']);
 
         return $this->post($query);
     }
 
     protected function createConstraintBlankUrl(): array
     {
-        $query = static::getDefault([AdvantageApiDtoInterface::URL => '']);
+        $query = static::getDefault([AdvantageApiDtoInterface::BODY => '']);
 
         return $this->post($query);
     }
@@ -60,8 +60,8 @@ trait BaseAdvantageTestTrait
     protected function checkAdvantage($entity): void
     {
         Assert::assertArrayHasKey(AdvantageApiDtoInterface::ID, $entity);
-        Assert::assertArrayHasKey(AdvantageApiDtoInterface::NAME, $entity);
-        Assert::assertArrayHasKey(AdvantageApiDtoInterface::URL, $entity);
-        Assert::assertArrayHasKey(AdvantageApiDtoInterface::ACTIVE, $entity);
+        Assert::assertArrayHasKey(AdvantageApiDtoInterface::TITLE, $entity);
+        Assert::assertArrayHasKey(AdvantageApiDtoInterface::BODY, $entity);
+        Assert::assertArrayHasKey(AdvantageApiDtoInterface::POSITION, $entity);
     }
 }

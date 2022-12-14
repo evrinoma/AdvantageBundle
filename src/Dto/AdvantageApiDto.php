@@ -13,42 +13,48 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Dto;
 
+use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\LogoTrait;
+use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\PositionTrait;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\BodyTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
-use Evrinoma\DtoCommon\ValueObject\Mutable\NameTrait;
-use Evrinoma\DtoCommon\ValueObject\Mutable\UrlTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\TitleTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
 {
-    use ActiveTrait;
+    use BodyTrait;
     use IdTrait;
-    use NameTrait;
-    use UrlTrait;
+    use LogoTrait;
+    use PositionTrait;
+    use TitleTrait;
 
     public function toDto(Request $request): DtoInterface
     {
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $active = $request->get(AdvantageApiDtoInterface::ACTIVE);
             $id = $request->get(AdvantageApiDtoInterface::ID);
-            $name = $request->get(AdvantageApiDtoInterface::NAME);
-            $url = $request->get(AdvantageApiDtoInterface::URL);
+            $title = $request->get(AdvantageApiDtoInterface::BODY);
+            $position = $request->get(AdvantageApiDtoInterface::POSITION);
+            $body = $request->get(AdvantageApiDtoInterface::TITLE);
+            $logo = $request->files->get(AdvantageApiDtoInterface::LOGO);
 
-            if ($active) {
-                $this->setActive($active);
-            }
             if ($id) {
                 $this->setId($id);
             }
-            if ($name) {
-                $this->setName($name);
+            if ($position) {
+                $this->setPosition($position);
             }
-            if ($url) {
-                $this->setUrl($url);
+            if ($title) {
+                $this->setTitle($title);
+            }
+            if ($body) {
+                $this->setBody($body);
+            }
+            if ($logo) {
+                $this->setLogo($logo);
             }
         }
 

@@ -13,11 +13,12 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Dto\Preserve;
 
-use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveInterface;
+use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\LogoInterface;
+use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\PositionInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\BodyInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\IdInterface;
-use Evrinoma\DtoCommon\ValueObject\Mutable\NameInterface;
-use Evrinoma\DtoCommon\ValueObject\Mutable\UrlInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\TitleInterface;
 
-interface AdvantageApiDtoInterface extends IdInterface, ActiveInterface, NameInterface, UrlInterface
+interface AdvantageApiDtoInterface extends IdInterface, LogoInterface, BodyInterface, TitleInterface, PositionInterface
 {
 }

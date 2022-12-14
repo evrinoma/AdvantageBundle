@@ -61,19 +61,18 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *     description="the method perform create advantage",
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="application/json",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                 example={
-     *                     "class": "Evrinoma\AdvantageBundle\Dto\AdvantageApiDto",
-     *                     "id": "48",
-     *                     "name": "Instagram",
-     *                     "url": "http://www.instagram.com/intertechelectro",
-     *                 },
-     *                 type="object",
-     *                 @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
-     *                 @OA\Property(property="id", type="string"),
-     *                 @OA\Property(property="name", type="string"),
-     *                 @OA\Property(property="url", type="string"),
+     *                 allOf={
+     *                     @OA\Schema(
+     *                         type="object",
+     *                         @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
+     *                         @OA\Property(property="body", type="string"),
+     *                         @OA\Property(property="title", type="string"),
+     *                         @OA\Property(property="position", type="int"),
+     *                         @OA\Property(property="logo", description="logo", type="string",  format="binary")
+     *                     )
+     *                 }
      *             )
      *         )
      *     )
@@ -103,27 +102,25 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
     }
 
     /**
-     * @Rest\Put("/api/advantage/save", options={"expose": true}, name="api_advantage_save")
-     * @OA\Put(
+     * @Rest\Post("/api/advantage/save", options={"expose": true}, name="api_advantage_save")
+     * @OA\Post(
      *     tags={"advantage"},
      *     description="the method perform save advantage for current entity",
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="application/json",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                 example={
-     *                     "class": "Evrinoma\AdvantageBundle\Dto\AdvantageApiDto",
-     *                     "active": "b",
-     *                     "id": "48",
-     *                     "name": "Instagram",
-     *                     "url": "http://www.instagram.com/intertechelectro",
-     *                 },
-     *                 type="object",
-     *                 @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
-     *                 @OA\Property(property="id", type="string"),
-     *                 @OA\Property(property="name", type="string"),
-     *                 @OA\Property(property="url", type="string"),
-     *                 @OA\Property(property="active", type="string")
+     *                 allOf={
+     *                     @OA\Schema(
+     *                         type="object",
+     *                         @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
+     *                         @OA\Property(property="id", type="string"),
+     *                         @OA\Property(property="body", type="string"),
+     *                         @OA\Property(property="title", type="string"),
+     *                         @OA\Property(property="position", type="int"),
+     *                         @OA\Property(property="logo", description="logo",  type="string",  format="binary")
+     *                     )
+     *                 }
      *             )
      *         )
      *     )
@@ -223,17 +220,25 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *         )
      *     ),
      *     @OA\Parameter(
-     *         description="name",
+     *         description="position",
      *         in="query",
-     *         name="name",
+     *         name="position",
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
      *     @OA\Parameter(
-     *         description="url",
+     *         description="title",
      *         in="query",
-     *         name="url",
+     *         name="title",
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         description="body",
+     *         in="query",
+     *         name="body",
      *         @OA\Schema(
      *             type="string",
      *         )
