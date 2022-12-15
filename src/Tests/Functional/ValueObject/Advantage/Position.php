@@ -13,10 +13,15 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage;
 
-use Evrinoma\TestUtilsBundle\ValueObject\Common\AbstractIdentity;
+use Evrinoma\TestUtilsBundle\ValueObject\Common\AbstractId;
 
-class Url extends AbstractIdentity
+class Position extends AbstractId
 {
-    protected static string $value = 'http://nvr';
-    protected static string $default = 'http://kpz';
+    protected static string $value = '1';
+    protected static string $default = '2';
+
+    public static function default(): string
+    {
+        return static::$default;
+    }
 }

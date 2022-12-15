@@ -50,6 +50,7 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('services')->addDefaultsIfNotSet()->children()
             ->scalarNode('pre_validator')->defaultNull()->info('This option is used to pre_validator overriding')->end()
             ->scalarNode('handler')->cannotBeEmpty()->defaultValue(EvrinomaAdvantageExtension::HANDLER)->info('This option is used to handler override')->end()
+            ->scalarNode('file_system')->defaultNull()->info('This option is used to file system override')->end()
             ->end()->end()
             ->end();
 

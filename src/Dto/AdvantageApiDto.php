@@ -17,6 +17,7 @@ use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\LogoTrait;
 use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\PositionTrait;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\BodyTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\TitleTrait;
@@ -24,6 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
 {
+    use ActiveTrait;
     use BodyTrait;
     use IdTrait;
     use LogoTrait;
@@ -36,11 +38,15 @@ class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
 
         if ($class === $this->getClass()) {
             $id = $request->get(AdvantageApiDtoInterface::ID);
+            $active = $request->get(AdvantageApiDtoInterface::ACTIVE);
             $title = $request->get(AdvantageApiDtoInterface::BODY);
             $position = $request->get(AdvantageApiDtoInterface::POSITION);
             $body = $request->get(AdvantageApiDtoInterface::TITLE);
             $logo = $request->files->get(AdvantageApiDtoInterface::LOGO);
 
+            if ($active) {
+                $this->setActive($active);
+            }
             if ($id) {
                 $this->setId($id);
             }

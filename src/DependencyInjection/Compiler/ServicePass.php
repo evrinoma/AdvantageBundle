@@ -38,5 +38,12 @@ class ServicePass extends AbstractRecursivePass
             $facade = $container->getDefinition('evrinoma.'.EvrinomaAdvantageBundle::BUNDLE.'.facade');
             $facade->setArgument(4, $handler);
         }
+        $serviceFileSystem = $container->hasParameter('evrinoma.'.EvrinomaAdvantageBundle::BUNDLE.'.services.system.file_system');
+        if ($serviceFileSystem) {
+            $serviceFileSystem = $container->getParameter('evrinoma.'.EvrinomaAdvantageBundle::BUNDLE.'.services.system.file_system');
+            $fileSystem = $container->getDefinition($serviceFileSystem);
+            $commandMediator = $container->getDefinition('evrinoma.'.EvrinomaAdvantageBundle::BUNDLE.'.command.mediator');
+            $commandMediator->setArgument(0, $fileSystem);
+        }
     }
 }

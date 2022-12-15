@@ -15,7 +15,7 @@ namespace Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage;
 
 use Evrinoma\TestUtilsBundle\ValueObject\Common\AbstractIdentity;
 
-class Name extends AbstractIdentity
+class Title extends AbstractIdentity
 {
     protected static string $value = 'nvr';
     protected static string $default = 'kpz';

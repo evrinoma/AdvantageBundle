@@ -35,6 +35,11 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
     public const API_PUT = 'evrinoma/api/advantage/save';
     public const API_POST = 'evrinoma/api/advantage/create';
 
+    public function put(array $query): array
+    {
+        return $this->queryPost($query);
+    }
+
     protected static function getDtoClass(): string
     {
         return AdvantageApiDto::class;
@@ -87,7 +92,7 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
     {
         $find = $this->assertGet(Id::value());
 
-        Assert::assertEquals(ActiveModel::POSITION, $find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
+        Assert::assertEquals(ActiveModel::ACTIVE, $find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
 
         $this->delete(Id::value());
         $this->testResponseStatusAccepted();

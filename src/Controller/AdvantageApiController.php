@@ -60,6 +60,7 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *     tags={"advantage"},
      *     description="the method perform create advantage",
      *     @OA\RequestBody(
+     *         required=true,
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
@@ -67,10 +68,11 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *                     @OA\Schema(
      *                         type="object",
      *                         @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
+     *                         @OA\Property(property="active", type="string"),
      *                         @OA\Property(property="body", type="string"),
      *                         @OA\Property(property="title", type="string"),
      *                         @OA\Property(property="position", type="int"),
-     *                         @OA\Property(property="logo", description="logo", type="string",  format="binary")
+     *                         @OA\Property(property="logo", type="string",  format="binary")
      *                     )
      *                 }
      *             )
@@ -107,6 +109,7 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *     tags={"advantage"},
      *     description="the method perform save advantage for current entity",
      *     @OA\RequestBody(
+     *         required=true,
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
@@ -115,10 +118,11 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *                         type="object",
      *                         @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
      *                         @OA\Property(property="id", type="string"),
+     *                         @OA\Property(property="active", type="string"),
      *                         @OA\Property(property="body", type="string"),
      *                         @OA\Property(property="title", type="string"),
      *                         @OA\Property(property="position", type="int"),
-     *                         @OA\Property(property="logo", description="logo",  type="string",  format="binary")
+     *                         @OA\Property(property="logo", type="string",  format="binary")
      *                     )
      *                 }
      *             )
@@ -215,6 +219,14 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *         description="id Entity",
      *         in="query",
      *         name="id",
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         description="active",
+     *         in="query",
+     *         name="active",
      *         @OA\Schema(
      *             type="string",
      *         )

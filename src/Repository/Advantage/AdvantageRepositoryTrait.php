@@ -52,6 +52,10 @@ trait AdvantageRepositoryTrait
      */
     public function remove(AdvantageInterface $advantage): bool
     {
+        $advantage
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setActiveToDelete();
+
         return true;
     }
 

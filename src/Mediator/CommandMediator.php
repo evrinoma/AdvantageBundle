@@ -15,17 +15,28 @@ namespace Evrinoma\AdvantageBundle\Mediator;
 
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
 use Evrinoma\AdvantageBundle\Model\Advantage\AdvantageInterface;
+use Evrinoma\AdvantageBundle\System\FileSystemInterface;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\UtilsBundle\Mediator\AbstractCommandMediator;
 
 class CommandMediator extends AbstractCommandMediator implements CommandMediatorInterface
 {
+    private FileSystemInterface $fileSystem;
+
+    public function __construct(FileSystemInterface $fileSystem)
+    {
+        $this->fileSystem = $fileSystem;
+    }
+
     public function onUpdate(DtoInterface $dto, $entity): AdvantageInterface
     {
         /* @var $dto AdvantageApiDtoInterface */
+        $file = $this->fileSystem->save($dto->getLogo());
         $entity
-            ->setName($dto->getName())
-            ->setUrl($dto->getUrl())
+            ->setTitle($dto->getTitle())
+            ->setPosition($dto->getPosition())
+            ->setBody($dto->getBody())
+            ->setLogo($file->getRealPath())
             ->setUpdatedAt(new \DateTimeImmutable())
             ->setActive($dto->getActive());
 
@@ -42,9 +53,12 @@ class CommandMediator extends AbstractCommandMediator implements CommandMediator
     public function onCreate(DtoInterface $dto, $entity): AdvantageInterface
     {
         /* @var $dto AdvantageApiDtoInterface */
+        $file = $this->fileSystem->save($dto->getLogo());
         $entity
-            ->setName($dto->getName())
-            ->setUrl($dto->getUrl())
+            ->setTitle($dto->getTitle())
+            ->setPosition($dto->getPosition())
+            ->setBody($dto->getBody())
+            ->setLogo($file->getRealPath())
             ->setCreatedAt(new \DateTimeImmutable())
             ->setActiveToActive();
 

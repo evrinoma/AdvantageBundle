@@ -88,3 +88,9 @@ services:
 
   Evrinoma\AdvantageBundle\PreValidator\DtoPreValidatorInterface:
     alias: evrinoma.advantage.pre.validator
+
+  Evrinoma\AdvantageBundle\System\FileSystem:
+    alias: evrinoma.advantage.system.file_system
+
+  Evrinoma\AdvantageBundle\System\FileSystemInterface:
+    alias: evrinoma.advantage.system.file_system

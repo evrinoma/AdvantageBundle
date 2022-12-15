@@ -15,6 +15,7 @@
         services:
           pre_validator - переопределение сервиса валидатора соц сетей
           handler - переопределение сервиса обработчика сущностей
+          file_system - переопределение сервиса сохранения файла
 
 # CQRS model
 
@@ -43,18 +44,18 @@ Actions в контроллере разбиты на две группы
 # Статусы:
 
     создание:
-        соц сеть создана HTTP_CREATED 201
+        описание создано HTTP_CREATED 201
     обновление:
-        соц сеть обновление HTTP_OK 200
+        описание обновлено HTTP_OK 200
     удаление:
-        соц сеть удален HTTP_ACCEPTED 202
+        описание удалено HTTP_ACCEPTED 202
     получение:
-        соц сеть(и) найдены HTTP_OK 200
+        описание(я) найдены HTTP_OK 200
     ошибки:
-        если соц сеть не найдена AdvantageNotFoundException возвращает HTTP_NOT_FOUND 404
-        если соц сеть не уникальна UniqueConstraintViolationException возвращает HTTP_CONFLICT 409
-        если соц сеть не прошла валидацию AdvantageInvalidException возвращает HTTP_UNPROCESSABLE_ENTITY 422
-        если соц сеть не может быть сохранена AdvantageCannotBeSavedException возвращает HTTP_NOT_IMPLEMENTED 501
+        если описание не найдено AdvantageNotFoundException возвращает HTTP_NOT_FOUND 404
+        если описание не уникально UniqueConstraintViolationException возвращает HTTP_CONFLICT 409
+        если описание не прошло валидацию AdvantageInvalidException возвращает HTTP_UNPROCESSABLE_ENTITY 422
+        если описание не может быть сохранено AdvantageCannotBeSavedException возвращает HTTP_NOT_IMPLEMENTED 501
         все остальные ошибки возвращаются как HTTP_BAD_REQUEST 400
 
 # Constraint

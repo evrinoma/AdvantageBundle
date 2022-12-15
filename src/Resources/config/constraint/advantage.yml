@@ -1,9 +1,12 @@
 services:
-  evrinoma.advantage.constraint.property.name:
-    class: Evrinoma\AdvantageBundle\Constraint\Property\Name
+  evrinoma.advantage.constraint.property.body:
+    class: Evrinoma\AdvantageBundle\Constraint\Property\Body
 
-  evrinoma.advantage.constraint.property.url:
-    class: Evrinoma\AdvantageBundle\Constraint\Property\Url
+  evrinoma.advantage.constraint.property.title:
+    class: Evrinoma\AdvantageBundle\Constraint\Property\Title
+
+  evrinoma.advantage.constraint.property.logo:
+    class: Evrinoma\AdvantageBundle\Constraint\Property\Logo
 
   evrinoma.advantage.constraint.property.active:
     class: Evrinoma\AdvantageBundle\Constraint\Property\Active

@@ -17,7 +17,7 @@ use Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
-class Url implements ConstraintInterface
+class Body implements ConstraintInterface
 {
     public function getConstraints(): array
     {
@@ -29,6 +29,6 @@ class Url implements ConstraintInterface
 
     public function getPropertyName(): string
     {
-        return 'url';
+        return 'body';
     }
 }

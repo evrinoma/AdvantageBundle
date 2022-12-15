@@ -156,6 +156,9 @@ class EvrinomaAdvantageExtension extends Extension
                         case 'handler':
                             $remap['handler'] = 'evrinoma.'.$this->getAlias().'.services.handler';
                             break;
+                        case 'file_system':
+                            $remap['file_system'] = 'evrinoma.'.$this->getAlias().'.services.system.file_system';
+                            break;
                     }
                 }
             }

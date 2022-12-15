@@ -62,6 +62,8 @@ trait BaseAdvantageTestTrait
         Assert::assertArrayHasKey(AdvantageApiDtoInterface::ID, $entity);
         Assert::assertArrayHasKey(AdvantageApiDtoInterface::TITLE, $entity);
         Assert::assertArrayHasKey(AdvantageApiDtoInterface::BODY, $entity);
+        Assert::assertArrayHasKey(AdvantageApiDtoInterface::ACTIVE, $entity);
+        Assert::assertArrayHasKey(AdvantageApiDtoInterface::LOGO, $entity);
         Assert::assertArrayHasKey(AdvantageApiDtoInterface::POSITION, $entity);
     }
 }

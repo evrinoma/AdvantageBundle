@@ -13,10 +13,15 @@ Evrinoma\AdvantageBundle\Model\Advantage\AbstractAdvantage:
     active:
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
       expose: true
-    name:
+    body:
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
       expose: true
-    url:
+    title:
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
       expose: true
-
+    position:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
+    logo:
+      groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true

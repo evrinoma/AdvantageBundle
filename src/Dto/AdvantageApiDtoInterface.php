@@ -16,10 +16,11 @@ namespace Evrinoma\AdvantageBundle\Dto;
 use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Immutable\LogoInterface;
 use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Immutable\PositionInterface;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\ActiveInterface;
 use Evrinoma\DtoCommon\ValueObject\Immutable\BodyInterface;
 use Evrinoma\DtoCommon\ValueObject\Immutable\IdInterface;
 use Evrinoma\DtoCommon\ValueObject\Immutable\TitleInterface;
 
-interface AdvantageApiDtoInterface extends DtoInterface, IdInterface, LogoInterface, TitleInterface, BodyInterface, PositionInterface
+interface AdvantageApiDtoInterface extends DtoInterface, IdInterface, LogoInterface, TitleInterface, BodyInterface, PositionInterface, ActiveInterface
 {
 }

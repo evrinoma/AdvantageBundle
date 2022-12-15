@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Evrinoma\AdvantageBundle\Model\Advantage;
 
 use Evrinoma\UtilsBundle\Entity\ActiveInterface;
+use Evrinoma\UtilsBundle\Entity\BodyInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtInterface;
 use Evrinoma\UtilsBundle\Entity\IdInterface;
-use Evrinoma\UtilsBundle\Entity\NameInterface;
-use Evrinoma\UtilsBundle\Entity\UrlInterface;
+use Evrinoma\UtilsBundle\Entity\TitleInterface;
 
-interface AdvantageInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, UrlInterface, NameInterface
+interface AdvantageInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, BodyInterface, TitleInterface
 {
 }
