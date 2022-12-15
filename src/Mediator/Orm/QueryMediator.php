@@ -56,6 +56,12 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                 ->setParameter('title', '%'.$dto->getTitle().'%');
         }
 
+        if ($dto->hasPosition()) {
+            $builder
+                ->andWhere($alias.'.position = :position')
+                ->setParameter('position', $dto->getPosition());
+        }
+
         if ($dto->hasActive()) {
             $builder
                 ->andWhere($alias.'.active = :active')

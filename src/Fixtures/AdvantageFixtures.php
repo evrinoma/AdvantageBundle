@@ -26,7 +26,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'ite',
             AdvantageApiDtoInterface::BODY => 'http://ite',
-            AdvantageApiDtoInterface::POSITION => '1',
+            AdvantageApiDtoInterface::POSITION => 1,
             AdvantageApiDtoInterface::ACTIVE => 'a',
             'created_at' => '2008-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -34,7 +34,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'kzkt',
             AdvantageApiDtoInterface::BODY => 'http://kzkt',
-            AdvantageApiDtoInterface::POSITION => '2',
+            AdvantageApiDtoInterface::POSITION => 2,
             AdvantageApiDtoInterface::ACTIVE => 'a',
             'created_at' => '2015-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -42,7 +42,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'c2m',
             AdvantageApiDtoInterface::BODY => 'http://c2m',
-            AdvantageApiDtoInterface::POSITION => '3',
+            AdvantageApiDtoInterface::POSITION => 3,
             AdvantageApiDtoInterface::ACTIVE => 'a',
             'created_at' => '2020-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -50,7 +50,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'kzkt2',
             AdvantageApiDtoInterface::BODY => 'http://kzkt2',
-            AdvantageApiDtoInterface::POSITION => '1',
+            AdvantageApiDtoInterface::POSITION => 1,
             AdvantageApiDtoInterface::ACTIVE => 'd',
             'created_at' => '2015-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -58,7 +58,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'nvr',
             AdvantageApiDtoInterface::BODY => 'http://nvr',
-            AdvantageApiDtoInterface::POSITION => '2',
+            AdvantageApiDtoInterface::POSITION => 2,
             AdvantageApiDtoInterface::ACTIVE => 'b',
             'created_at' => '2010-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -66,7 +66,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'nvr2',
             AdvantageApiDtoInterface::BODY => 'http://nvr2',
-            AdvantageApiDtoInterface::POSITION => '3',
+            AdvantageApiDtoInterface::POSITION => 3,
             AdvantageApiDtoInterface::ACTIVE => 'd',
             'created_at' => '2010-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -74,7 +74,7 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
         [
             AdvantageApiDtoInterface::TITLE => 'nvr3',
             AdvantageApiDtoInterface::BODY => 'http://nvr3',
-            AdvantageApiDtoInterface::POSITION => '1',
+            AdvantageApiDtoInterface::POSITION => 1,
             AdvantageApiDtoInterface::ACTIVE => 'd',
             'created_at' => '2011-10-23 10:21:50',
             AdvantageApiDtoInterface::LOGO => 'PATH://TO_LOGO',
@@ -100,10 +100,10 @@ class AdvantageFixtures extends AbstractFixture implements FixtureGroupInterface
             $entity
                 ->setLogo($record[AdvantageApiDtoInterface::LOGO])
                 ->setActive($record[AdvantageApiDtoInterface::ACTIVE])
-                ->setName($record[AdvantageApiDtoInterface::TITLE])
-                ->setUrl($record[AdvantageApiDtoInterface::BODY])
-                ->setCreatedAt(new \DateTimeImmutable($record['created_at']))
-                ->setActive($record[AdvantageApiDtoInterface::POSITION]);
+                ->setTitle($record[AdvantageApiDtoInterface::TITLE])
+                ->setBody($record[AdvantageApiDtoInterface::BODY])
+                ->setPosition($record[AdvantageApiDtoInterface::POSITION])
+                ->setCreatedAt(new \DateTimeImmutable($record['created_at']));
             $this->addReference($short.$i, $entity);
             $manager->persist($entity);
             ++$i;

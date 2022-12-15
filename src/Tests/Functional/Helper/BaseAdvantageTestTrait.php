@@ -16,9 +16,20 @@ namespace Evrinoma\AdvantageBundle\Tests\Functional\Helper;
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
 use Evrinoma\UtilsBundle\Model\Rest\PayloadModel;
 use PHPUnit\Framework\Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait BaseAdvantageTestTrait
 {
+    protected static function initFiles(): void
+    {
+        $path = tempnam(sys_get_temp_dir(), 'http');
+        file_put_contents($path, 'my_file');
+
+        $file = new UploadedFile($path, 'my_file');
+
+        static::$files = [AdvantageApiDtoInterface::LOGO => $file];
+    }
+
     protected function assertGet(string $id): array
     {
         $find = $this->get($id);

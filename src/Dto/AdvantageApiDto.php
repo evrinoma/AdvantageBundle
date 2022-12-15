@@ -39,9 +39,9 @@ class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
         if ($class === $this->getClass()) {
             $id = $request->get(AdvantageApiDtoInterface::ID);
             $active = $request->get(AdvantageApiDtoInterface::ACTIVE);
-            $title = $request->get(AdvantageApiDtoInterface::BODY);
+            $title = $request->get(AdvantageApiDtoInterface::TITLE);
             $position = $request->get(AdvantageApiDtoInterface::POSITION);
-            $body = $request->get(AdvantageApiDtoInterface::TITLE);
+            $body = $request->get(AdvantageApiDtoInterface::BODY);
             $logo = $request->files->get(AdvantageApiDtoInterface::LOGO);
 
             if ($active) {

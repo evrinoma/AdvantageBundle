@@ -17,10 +17,12 @@ use Evrinoma\AdvantageBundle\Dto\AdvantageApiDto;
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
 use Evrinoma\AdvantageBundle\Tests\Functional\Helper\BaseAdvantageTestTrait;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Active;
+use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Body;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Id;
-use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Name;
-use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Url;
+use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Position;
+use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Title;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
+use Evrinoma\TestUtilsBundle\Browser\ApiBrowserTestInterface;
 use Evrinoma\UtilsBundle\Model\ActiveModel;
 use Evrinoma\UtilsBundle\Model\Rest\PayloadModel;
 use PHPUnit\Framework\Assert;
@@ -35,10 +37,10 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
     public const API_PUT = 'evrinoma/api/advantage/save';
     public const API_POST = 'evrinoma/api/advantage/create';
 
-    public function put(array $query): array
-    {
-        return $this->queryPost($query);
-    }
+    protected string $methodPut = ApiBrowserTestInterface::POST;
+
+    protected static array $header = ['CONTENT_TYPE' => 'multipart/form-data'];
+    protected bool $form = true;
 
     protected static function getDtoClass(): string
     {
@@ -47,12 +49,15 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
 
     protected static function defaultData(): array
     {
+        static::initFiles();
+
         return [
             AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(),
             AdvantageApiDtoInterface::ID => Id::default(),
-            AdvantageApiDtoInterface::TITLE => Name::default(),
-            AdvantageApiDtoInterface::POSITION => Active::value(),
-            AdvantageApiDtoInterface::BODY => Url::default(),
+            AdvantageApiDtoInterface::TITLE => Title::default(),
+            AdvantageApiDtoInterface::POSITION => Position::value(),
+            AdvantageApiDtoInterface::ACTIVE => Active::value(),
+            AdvantageApiDtoInterface::BODY => Body::default(),
         ];
     }
 
@@ -64,26 +69,26 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
 
     public function actionCriteriaNotFound(): void
     {
-        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::POSITION => Active::wrong()]);
+        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ACTIVE => Active::wrong()]);
         $this->testResponseStatusNotFound();
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $find);
 
-        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::POSITION => Active::block(), AdvantageApiDtoInterface::TITLE => Name::wrong()]);
+        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::ACTIVE => Active::block(), AdvantageApiDtoInterface::TITLE => Title::wrong()]);
         $this->testResponseStatusNotFound();
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $find);
     }
 
     public function actionCriteria(): void
     {
-        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::POSITION => Active::value(), AdvantageApiDtoInterface::ID => Id::value()]);
+        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ACTIVE => Active::value(), AdvantageApiDtoInterface::ID => Id::value()]);
         $this->testResponseStatusOK();
         Assert::assertCount(1, $find[PayloadModel::PAYLOAD]);
 
-        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::POSITION => Active::delete()]);
+        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ACTIVE => Active::delete()]);
         $this->testResponseStatusOK();
         Assert::assertCount(3, $find[PayloadModel::PAYLOAD]);
 
-        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::POSITION => Active::delete(), AdvantageApiDtoInterface::TITLE => Name::value()]);
+        $find = $this->criteria([AdvantageApiDtoInterface::DTO_CLASS => static::getDtoClass(), AdvantageApiDtoInterface::ACTIVE => Active::delete(), AdvantageApiDtoInterface::TITLE => Title::value()]);
         $this->testResponseStatusOK();
         Assert::assertCount(2, $find[PayloadModel::PAYLOAD]);
     }
@@ -92,25 +97,27 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
     {
         $find = $this->assertGet(Id::value());
 
-        Assert::assertEquals(ActiveModel::ACTIVE, $find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
+        Assert::assertEquals(ActiveModel::ACTIVE, $find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ACTIVE]);
 
         $this->delete(Id::value());
         $this->testResponseStatusAccepted();
 
         $delete = $this->assertGet(Id::value());
 
-        Assert::assertEquals(ActiveModel::DELETED, $delete[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
+        Assert::assertEquals(ActiveModel::DELETED, $delete[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ACTIVE]);
     }
 
     public function actionPut(): void
     {
         $find = $this->assertGet(Id::value());
 
-        $updated = $this->put(static::getDefault([AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::TITLE => Name::value()]));
+        $updated = $this->put(static::getDefault([AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::TITLE => Title::value(), AdvantageApiDtoInterface::BODY => Body::value(), AdvantageApiDtoInterface::POSITION => Position::value()]));
         $this->testResponseStatusOK();
 
         Assert::assertEquals($find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID]);
-        Assert::assertEquals(Name::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::TITLE]);
+        Assert::assertEquals(Title::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::TITLE]);
+        Assert::assertEquals(Body::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::BODY]);
+        Assert::assertEquals(Position::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
     }
 
     public function actionGet(): void
@@ -141,7 +148,12 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
 
     public function actionPutNotFound(): void
     {
-        $this->put(static::getDefault([AdvantageApiDtoInterface::ID => Id::wrong(), AdvantageApiDtoInterface::TITLE => Name::wrong()]));
+        $this->put(static::getDefault([
+            AdvantageApiDtoInterface::ID => Id::wrong(),
+            AdvantageApiDtoInterface::TITLE => Title::wrong(),
+            AdvantageApiDtoInterface::BODY => Body::wrong(),
+            AdvantageApiDtoInterface::POSITION => Position::wrong(),
+        ]));
         $this->testResponseStatusNotFound();
     }
 
@@ -151,12 +163,23 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
         $this->testResponseStatusCreated();
         $this->checkResult($created);
 
-        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::TITLE => Name::empty()]);
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::TITLE => Title::empty()]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::BODY => BODY::empty()]);
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::BODY => Body::empty()]);
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
+
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::POSITION => Position::empty()]);
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
+
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID]]);
+        static::$files = [];
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();

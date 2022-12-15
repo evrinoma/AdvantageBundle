@@ -10,3 +10,6 @@ services:
 
   evrinoma.advantage.constraint.property.active:
     class: Evrinoma\AdvantageBundle\Constraint\Property\Active
+
+  evrinoma.advantage.constraint.property.position:
+    class: Evrinoma\AdvantageBundle\Constraint\Property\Position

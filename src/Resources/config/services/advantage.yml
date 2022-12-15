@@ -71,6 +71,7 @@ services:
     class: Evrinoma\AdvantageBundle\Mediator\CommandMediator
     public: true
     arguments:
+      - '@evrinoma.advantage.system.file_system'
 
   Evrinoma\AdvantageBundle\Mediator\CommandMediator:
     alias: evrinoma.advantage.command.mediator
@@ -88,6 +89,11 @@ services:
 
   Evrinoma\AdvantageBundle\PreValidator\DtoPreValidatorInterface:
     alias: evrinoma.advantage.pre.validator
+
+  evrinoma.advantage.system.file_system:
+    class: Evrinoma\AdvantageBundle\System\FileSystem
+    public: true
+    arguments:
 
   Evrinoma\AdvantageBundle\System\FileSystem:
     alias: evrinoma.advantage.system.file_system
