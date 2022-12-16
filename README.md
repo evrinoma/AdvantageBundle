@@ -2,7 +2,7 @@
 
 преопределение штатного класса сущности
 
-    contractor:
+    advantage:
         db_driver: orm модель данных
         factory: App\Advantage\Factory\AdvantageFactory фабрика для создания объектов,
                  недостающие значения можно разрешить только на уровне Mediator
@@ -10,10 +10,10 @@
         constraints: Вкл/выкл проверки полей сущности по умолчанию 
         dto_class: App\Advantage\Dto\AdvantageDto класс dto с которым работает сущность
         decorates:
-          command - декоратор mediator команд соц сетей 
-          query - декоратор mediator запросов соц сетей
+          command - декоратор mediator команд описания
+          query - декоратор mediator запросов описания
         services:
-          pre_validator - переопределение сервиса валидатора соц сетей
+          pre_validator - переопределение сервиса валидатора описания
           handler - переопределение сервиса обработчика сущностей
           file_system - переопределение сервиса сохранения файла
 
@@ -117,5 +117,5 @@ vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php
 ## Done
 
 ## License
-
+    PROPRIETARY
    
