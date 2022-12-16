@@ -37,9 +37,9 @@ Actions в контроллере разбиты на две группы
 
 группы  сериализации
 
-    1. API_GET_ADVANTAGE, API_CRITERIA_ADVANTAGE - получение соц сети
-    2. API_POST_ADVANTAGE - создание соц сети
-    3. API_PUT_ADVANTAGE -  редактирование соц сети
+    1. API_GET_ADVANTAGE, API_CRITERIA_ADVANTAGE - получение описания
+    2. API_POST_ADVANTAGE - создание описания
+    3. API_PUT_ADVANTAGE -  редактирование описания
 
 # Статусы:
 
