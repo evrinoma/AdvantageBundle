@@ -18,6 +18,7 @@ use Evrinoma\UtilsBundle\Entity\ActiveTrait;
 use Evrinoma\UtilsBundle\Entity\BodyTrait;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtTrait;
 use Evrinoma\UtilsBundle\Entity\IdTrait;
+use Evrinoma\UtilsBundle\Entity\PositionTrait;
 use Evrinoma\UtilsBundle\Entity\TitleTrait;
 
 /**
@@ -29,37 +30,13 @@ abstract class AbstractAdvantage implements AdvantageInterface
     use BodyTrait;
     use CreateUpdateAtTrait;
     use IdTrait;
+    use PositionTrait;
     use TitleTrait;
-
-    /**
-     * @ORM\Column(name="position", type="integer")
-     */
-    protected int $position;
 
     /**
      * @ORM\Column(name="logo", type="string", length=2047)
      */
     protected string $logo;
-
-    /**
-     * @return int
-     */
-    public function getPosition(): int
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     *
-     * @return AdvantageInterface
-     */
-    public function setPosition(int $position): AdvantageInterface
-    {
-        $this->position = $position;
-
-        return $this;
-    }
 
     /**
      * @return string

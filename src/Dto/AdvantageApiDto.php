@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace Evrinoma\AdvantageBundle\Dto;
 
 use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\LogoTrait;
-use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\PositionTrait;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\BodyTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\PositionTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\TitleTrait;
 use Symfony\Component\HttpFoundation\Request;
 
