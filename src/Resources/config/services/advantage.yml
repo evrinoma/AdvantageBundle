@@ -17,6 +17,7 @@ services:
     arguments:
       - '@evrinoma.advantage.command.manager'
       - '@evrinoma.advantage.query.manager'
+      - '@evrinoma.advantage.adaptor'
     autowire: true
 
   Evrinoma\AdvantageBundle\Facade\Advantage\FacadeInterface:
