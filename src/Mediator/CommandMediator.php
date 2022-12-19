@@ -36,7 +36,7 @@ class CommandMediator extends AbstractCommandMediator implements CommandMediator
             ->setTitle($dto->getTitle())
             ->setPosition($dto->getPosition())
             ->setBody($dto->getBody())
-            ->setLogo($file->getRealPath())
+            ->setLogo($file->getPathname())
             ->setUpdatedAt(new \DateTimeImmutable())
             ->setActive($dto->getActive());
 
@@ -58,7 +58,7 @@ class CommandMediator extends AbstractCommandMediator implements CommandMediator
             ->setTitle($dto->getTitle())
             ->setPosition($dto->getPosition())
             ->setBody($dto->getBody())
-            ->setLogo($file->getRealPath())
+            ->setLogo($file->getPathname())
             ->setCreatedAt(new \DateTimeImmutable())
             ->setActiveToActive();
 
