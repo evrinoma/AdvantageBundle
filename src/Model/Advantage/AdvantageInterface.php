@@ -23,5 +23,6 @@ use Evrinoma\UtilsBundle\Entity\TitleInterface;
 interface AdvantageInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, BodyInterface, TitleInterface, PositionInterface
 {
     public function getLogo(): string;
+
     public function setLogo(string $logo): AdvantageInterface;
 }
