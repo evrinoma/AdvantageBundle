@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Dto;
 
-use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Immutable\LogoInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\LogoInterface;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\Immutable\ActiveInterface;
 use Evrinoma\DtoCommon\ValueObject\Immutable\BodyInterface;

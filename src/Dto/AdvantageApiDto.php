@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Dto;
 
-use Evrinoma\AdvantageBundle\DtoCommon\ValueObject\Mutable\LogoTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\LogoTrait;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveTrait;

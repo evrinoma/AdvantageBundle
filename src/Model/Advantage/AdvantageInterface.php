@@ -17,12 +17,10 @@ use Evrinoma\UtilsBundle\Entity\ActiveInterface;
 use Evrinoma\UtilsBundle\Entity\BodyInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtInterface;
 use Evrinoma\UtilsBundle\Entity\IdInterface;
+use Evrinoma\UtilsBundle\Entity\LogoInterface;
 use Evrinoma\UtilsBundle\Entity\PositionInterface;
 use Evrinoma\UtilsBundle\Entity\TitleInterface;
 
-interface AdvantageInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, BodyInterface, TitleInterface, PositionInterface
+interface AdvantageInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, BodyInterface, TitleInterface, PositionInterface, LogoInterface
 {
-    public function getLogo(): string;
-
-    public function setLogo(string $logo): AdvantageInterface;
 }
