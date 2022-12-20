@@ -31,7 +31,7 @@ abstract class AbstractAdvantage implements AdvantageInterface
     use BodyTrait;
     use CreateUpdateAtTrait;
     use IdTrait;
+    use LogoTrait;
     use PositionTrait;
     use TitleTrait;
-    use LogoTrait;
 }

@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Evrinoma\AdvantageBundle\Dto\Preserve;
 
-use Evrinoma\DtoCommon\ValueObject\Preserve\LogoTrait;
 use Evrinoma\DtoCommon\ValueObject\Preserve\ActiveTrait;
 use Evrinoma\DtoCommon\ValueObject\Preserve\BodyTrait;
 use Evrinoma\DtoCommon\ValueObject\Preserve\IdTrait;
+use Evrinoma\DtoCommon\ValueObject\Preserve\LogoTrait;
 use Evrinoma\DtoCommon\ValueObject\Preserve\PositionTrait;
 use Evrinoma\DtoCommon\ValueObject\Preserve\TitleTrait;
 
