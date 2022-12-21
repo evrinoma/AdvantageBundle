@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Evrinoma\AdvantageBundle\Factory;
+namespace Evrinoma\AdvantageBundle\Factory\Advantage;
 
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
 use Evrinoma\AdvantageBundle\Model\Advantage\AdvantageInterface;
