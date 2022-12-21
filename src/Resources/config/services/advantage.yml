@@ -24,7 +24,7 @@ services:
     alias: evrinoma.advantage.facade
 
   evrinoma.advantage.factory:
-    class: Evrinoma\AdvantageBundle\Factory\AdvantageFactory
+    class: Evrinoma\AdvantageBundle\Factory\Advantage\Factory
     public: true
     arguments:
 

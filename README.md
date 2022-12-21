@@ -4,7 +4,7 @@
 
     advantage:
         db_driver: orm модель данных
-        factory: App\Advantage\Factory\AdvantageFactory фабрика для создания объектов,
+        factory: App\Advantage\Factory\Advantage\Factory фабрика для создания объектов,
                  недостающие значения можно разрешить только на уровне Mediator
         entity: App\Advantage\Entity\Advantage сущность
         constraints: Вкл/выкл проверки полей сущности по умолчанию 

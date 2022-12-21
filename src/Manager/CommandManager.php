@@ -19,7 +19,7 @@ use Evrinoma\AdvantageBundle\Exception\AdvantageCannotBeRemovedException;
 use Evrinoma\AdvantageBundle\Exception\AdvantageCannotBeSavedException;
 use Evrinoma\AdvantageBundle\Exception\AdvantageInvalidException;
 use Evrinoma\AdvantageBundle\Exception\AdvantageNotFoundException;
-use Evrinoma\AdvantageBundle\Factory\AdvantageFactoryInterface;
+use Evrinoma\AdvantageBundle\Factory\Advantage\FactoryInterface;
 use Evrinoma\AdvantageBundle\Mediator\CommandMediatorInterface;
 use Evrinoma\AdvantageBundle\Model\Advantage\AdvantageInterface;
 use Evrinoma\AdvantageBundle\Repository\Advantage\AdvantageRepositoryInterface;
@@ -29,16 +29,16 @@ final class CommandManager implements CommandManagerInterface
 {
     private AdvantageRepositoryInterface $repository;
     private ValidatorInterface            $validator;
-    private AdvantageFactoryInterface           $factory;
+    private FactoryInterface           $factory;
     private CommandMediatorInterface      $mediator;
 
     /**
      * @param ValidatorInterface           $validator
      * @param AdvantageRepositoryInterface $repository
-     * @param AdvantageFactoryInterface    $factory
+     * @param FactoryInterface             $factory
      * @param CommandMediatorInterface     $mediator
      */
-    public function __construct(ValidatorInterface $validator, AdvantageRepositoryInterface $repository, AdvantageFactoryInterface $factory, CommandMediatorInterface $mediator)
+    public function __construct(ValidatorInterface $validator, AdvantageRepositoryInterface $repository, FactoryInterface $factory, CommandMediatorInterface $mediator)
     {
         $this->validator = $validator;
         $this->repository = $repository;

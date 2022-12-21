@@ -14,26 +14,14 @@ declare(strict_types=1);
 namespace Evrinoma\AdvantageBundle\Factory;
 
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDtoInterface;
-use Evrinoma\AdvantageBundle\Entity\Advantage\BaseAdvantage;
 use Evrinoma\AdvantageBundle\Model\Advantage\AdvantageInterface;
 
-class AdvantageFactory implements AdvantageFactoryInterface
+interface FactoryInterface
 {
-    private static string $entityClass = BaseAdvantage::class;
-
-    public function __construct(string $entityClass)
-    {
-        self::$entityClass = $entityClass;
-    }
-
     /**
      * @param AdvantageApiDtoInterface $dto
      *
      * @return AdvantageInterface
      */
-    public function create(AdvantageApiDtoInterface $dto): AdvantageInterface
-    {
-        /* @var BaseAdvantage $advantage */
-        return new self::$entityClass();
-    }
+    public function create(AdvantageApiDtoInterface $dto): AdvantageInterface;
 }

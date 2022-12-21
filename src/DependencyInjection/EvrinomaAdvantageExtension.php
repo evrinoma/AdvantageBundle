@@ -17,7 +17,7 @@ use Evrinoma\AdvantageBundle\DependencyInjection\Compiler\Constraint\Property\Ad
 use Evrinoma\AdvantageBundle\Dto\AdvantageApiDto;
 use Evrinoma\AdvantageBundle\Entity\Advantage\BaseAdvantage;
 use Evrinoma\AdvantageBundle\EvrinomaAdvantageBundle;
-use Evrinoma\AdvantageBundle\Factory\AdvantageFactory;
+use Evrinoma\AdvantageBundle\Factory\Advantage\Factory as AdvantageFactory;
 use Evrinoma\AdvantageBundle\Mediator\QueryMediatorInterface;
 use Evrinoma\AdvantageBundle\Repository\Advantage\AdvantageCommandRepositoryInterface;
 use Evrinoma\AdvantageBundle\Repository\Advantage\AdvantageQueryRepositoryInterface;
