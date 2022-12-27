@@ -7,9 +7,11 @@ Evrinoma\AdvantageBundle\Model\Advantage\AbstractAdvantage:
     createdAt:
       type: DateTimeImmutable<'Y-m-d H:i'>
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
     updatedAt:
       type: DateTimeImmutable<'Y-m-d H:i'>
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
+      expose: true
     active:
       groups: [ API_GET_ADVANTAGE, API_POST_ADVANTAGE, API_PUT_ADVANTAGE, ]
       expose: true
