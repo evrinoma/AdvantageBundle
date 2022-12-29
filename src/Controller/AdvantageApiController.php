@@ -68,11 +68,11 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *                     @OA\Schema(
      *                         type="object",
      *                         @OA\Property(property="class", type="string", default="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto"),
-     *                         @OA\Property(property="active", type="string"),
      *                         @OA\Property(property="body", type="string"),
      *                         @OA\Property(property="title", type="string"),
      *                         @OA\Property(property="position", type="int"),
-     *                         @OA\Property(property="logo", type="string",  format="binary")
+     *                         @OA\Property(property="logo", type="string"),
+     *                         @OA\Property(property="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto[logo]", type="string",  format="binary")
      *                     )
      *                 }
      *             )
@@ -122,7 +122,8 @@ final class AdvantageApiController extends AbstractWrappedApiController implemen
      *                         @OA\Property(property="body", type="string"),
      *                         @OA\Property(property="title", type="string"),
      *                         @OA\Property(property="position", type="int"),
-     *                         @OA\Property(property="logo", type="string",  format="binary")
+     *                         @OA\Property(property="logo", type="string"),
+     *                         @OA\Property(property="Evrinoma\AdvantageBundle\Dto\AdvantageApiDto[logo]", type="string",  format="binary")
      *                     )
      *                 }
      *             )

@@ -19,6 +19,7 @@ use Evrinoma\AdvantageBundle\Tests\Functional\Helper\BaseAdvantageTestTrait;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Active;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Body;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Id;
+use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Logo;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Position;
 use Evrinoma\AdvantageBundle\Tests\Functional\ValueObject\Advantage\Title;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
@@ -58,11 +59,17 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
             AdvantageApiDtoInterface::POSITION => Position::value(),
             AdvantageApiDtoInterface::ACTIVE => Active::value(),
             AdvantageApiDtoInterface::BODY => Body::default(),
+            AdvantageApiDtoInterface::LOGO => Logo::default(),
         ];
     }
 
     public function actionPost(): void
     {
+        $this->createAdvantage();
+        $this->testResponseStatusCreated();
+
+        static::$files = [];
+
         $this->createAdvantage();
         $this->testResponseStatusCreated();
     }
@@ -153,6 +160,7 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
             AdvantageApiDtoInterface::TITLE => Title::wrong(),
             AdvantageApiDtoInterface::BODY => Body::wrong(),
             AdvantageApiDtoInterface::POSITION => Position::wrong(),
+            AdvantageApiDtoInterface::LOGO => Logo::wrong(),
         ]));
         $this->testResponseStatusNotFound();
     }
@@ -178,7 +186,13 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID]]);
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::LOGO => Logo::empty()]);
+        static::$files[static::getDtoClass()] = [];
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
+
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], AdvantageApiDtoInterface::LOGO => Logo::empty()]);
         static::$files = [];
 
         $this->put($query);

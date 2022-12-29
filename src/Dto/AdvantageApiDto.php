@@ -21,6 +21,7 @@ use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\LogoTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\PositionTrait;
 use Evrinoma\DtoCommon\ValueObject\Mutable\TitleTrait;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
@@ -42,7 +43,21 @@ class AdvantageApiDto extends AbstractDto implements AdvantageApiDtoInterface
             $title = $request->get(AdvantageApiDtoInterface::TITLE);
             $position = $request->get(AdvantageApiDtoInterface::POSITION);
             $body = $request->get(AdvantageApiDtoInterface::BODY);
-            $logo = $request->files->get(AdvantageApiDtoInterface::LOGO);
+
+            $files = ($request->files->has($this->getClass())) ? $request->files->get($this->getClass()) : [];
+
+            try {
+                if (\array_key_exists(AdvantageApiDtoInterface::LOGO, $files)) {
+                    $logo = $files[AdvantageApiDtoInterface::LOGO];
+                } else {
+                    $logo = $request->get(AdvantageApiDtoInterface::LOGO);
+                    if (null !== $logo) {
+                        $logo = new File($logo);
+                    }
+                }
+            } catch (\Exception $e) {
+                $logo = null;
+            }
 
             if ($active) {
                 $this->setActive($active);

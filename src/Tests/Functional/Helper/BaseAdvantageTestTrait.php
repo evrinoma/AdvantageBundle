@@ -27,7 +27,11 @@ trait BaseAdvantageTestTrait
 
         $file = new UploadedFile($path, 'my_file');
 
-        static::$files = [AdvantageApiDtoInterface::LOGO => $file];
+        static::$files = [
+            static::getDtoClass() => [
+                AdvantageApiDtoInterface::LOGO => $file,
+            ],
+        ];
     }
 
     protected function assertGet(string $id): array
