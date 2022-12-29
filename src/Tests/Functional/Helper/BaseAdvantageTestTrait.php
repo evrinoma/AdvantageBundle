@@ -65,6 +65,14 @@ trait BaseAdvantageTestTrait
         return $this->post($query);
     }
 
+    protected function compareResults(array $value, array $entity, array $query): void
+    {
+        Assert::assertEquals($value[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], $entity[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID]);
+        Assert::assertEquals($query[AdvantageApiDtoInterface::TITLE], $entity[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::TITLE]);
+        Assert::assertEquals($query[AdvantageApiDtoInterface::BODY], $entity[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::BODY]);
+        Assert::assertEquals($query[AdvantageApiDtoInterface::POSITION], $entity[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
+    }
+
     protected function checkResult($entity): void
     {
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $entity);

@@ -116,15 +116,21 @@ class BaseAdvantage extends AbstractServiceTest implements BaseAdvantageTestInte
 
     public function actionPut(): void
     {
+        $query = static::getDefault([AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::TITLE => Title::value(), AdvantageApiDtoInterface::BODY => Body::value(), AdvantageApiDtoInterface::POSITION => Position::value()]);
+
         $find = $this->assertGet(Id::value());
 
-        $updated = $this->put(static::getDefault([AdvantageApiDtoInterface::ID => Id::value(), AdvantageApiDtoInterface::TITLE => Title::value(), AdvantageApiDtoInterface::BODY => Body::value(), AdvantageApiDtoInterface::POSITION => Position::value()]));
+        $updated = $this->put($query);
         $this->testResponseStatusOK();
 
-        Assert::assertEquals($find[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID], $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::ID]);
-        Assert::assertEquals(Title::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::TITLE]);
-        Assert::assertEquals(Body::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::BODY]);
-        Assert::assertEquals(Position::value(), $updated[PayloadModel::PAYLOAD][0][AdvantageApiDtoInterface::POSITION]);
+        $this->compareResults($find, $updated, $query);
+
+        static::$files = [];
+
+        $updated = $this->put($query);
+        $this->testResponseStatusOK();
+
+        $this->compareResults($find, $updated, $query);
     }
 
     public function actionGet(): void
